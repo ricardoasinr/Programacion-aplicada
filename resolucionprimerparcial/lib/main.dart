@@ -13,8 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Primer Parcial',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Ricardo Asin'),
     );
   }
@@ -45,12 +46,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
         actions: [
           TextButton(
             child: const Text(
               'Random',
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
               getImage();
