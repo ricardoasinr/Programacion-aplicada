@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resolucionprimerparcial/Models/data.dart';
-import 'package:resolucionprimerparcial/Services/ApiServices.dart';
+import 'package:resolucionprimerparcial/Screens/lunes_screen.dart';
+import 'package:resolucionprimerparcial/Screens/sabado_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Primer Parcial',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.indigo,
       ),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Ricardo Asin'),
@@ -31,46 +31,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final ApiServices apiServices = ApiServices();
-  final List<Datos> listaDondeSeVanAGuardarLasFotos = [];
-
-  Future? getImage() async {
-    var image = await apiServices.getData();
-    print(image.message);
-    setState(() {
-      listaDondeSeVanAGuardarLasFotos.add(image);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.black,
-        actions: [
-          TextButton(
-            child: const Text(
-              'Random',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              getImage();
-            },
+        appBar: AppBar(
+          title: Text(
+            widget.title,
+            style: const TextStyle(color: Colors.white),
           ),
-        ],
-      ),
-      body: ListView.builder(
-          itemCount: listaDondeSeVanAGuardarLasFotos.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child:
-                  Image.network(listaDondeSeVanAGuardarLasFotos[index].message),
-            );
-          }),
-    );
+          backgroundColor: Colors.black,
+        ),
+        body: Center(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => (const SabadoScreen()),
+                        ),
+                      );
+                    },
+                    child: const Text('Sábado')),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => (const LunesScreen()),
+                        ),
+                      );
+                    },
+                    child: const Text('Lunes'))
+              ]),
+        ));
   }
 }
