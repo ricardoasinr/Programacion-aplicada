@@ -13,9 +13,8 @@ namespace Ayudantia28WebApp.Models
     }
     public class People
     {
-        [Key]
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]//Llave primaria
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //Se coloca .Identity para obtener el ID automático
         public int personId { get; set; }
 
 
