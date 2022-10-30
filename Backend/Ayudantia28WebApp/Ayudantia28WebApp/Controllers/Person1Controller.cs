@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ayudantia28WebApp.Data;
 using Ayudantia28WebApp.Models;
-
+//Este controlador se creó para tener una API y una WebApp en un mismo proyecto.
 namespace Ayudantia28WebApp.Controllers
 {
     [Route("api/[controller]")]
